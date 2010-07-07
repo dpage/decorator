@@ -11,8 +11,8 @@
 IDI_ICON1 ICON DISCARDABLE "Decorator.ico"
 
 VS_VERSION_INFO VERSIONINFO
-FILEVERSION    1,0,1,0
-PRODUCTVERSION 1,0,1,0
+FILEVERSION    1,0,2,0
+PRODUCTVERSION 1,0,2,0
 FILEOS         VOS__WINDOWS32
 FILETYPE       VFT_APP
 BEGIN
@@ -20,15 +20,15 @@ BEGIN
     BEGIN
         BLOCK "040904E4"
         BEGIN
-            VALUE "FileVersion",     "1.0.1"
-            VALUE "File Version",    "1.0.1"
+            VALUE "FileVersion",     "1.0.2"
+            VALUE "File Version",    "1.0.2"
             VALUE "FileDescription", "Decorator"
             VALUE "LegalCopyright",  "\251 2010, Dave Page"
             VALUE "LegalTrademarks", "This software is released under the BSD Licence."
             VALUE "InternalName",    "Decorator"
             VALUE "OriginalFilename","Decorator.exe"
             VALUE "ProductName",     "Decorator"
-            VALUE "ProductVersion",  "1.0.1"
+            VALUE "ProductVersion",  "1.0.2"
         END
     END
     BLOCK "VarFileInfo"
