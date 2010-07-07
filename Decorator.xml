@@ -1,0 +1,84 @@
+<project>
+    <shortName>Decorator</shortName>
+    <fullName>Decorator</fullName>
+    <version>1.0.1</version>
+    <installerFilename>${product_shortname}-${product_version}.${platform_exec_suffix}</installerFilename>
+    <enableRollback>1</enableRollback>
+    <enableTimestamp>1</enableTimestamp>
+    <saveRelativePaths>1</saveRelativePaths>
+    <outputDirectory>Release</outputDirectory>
+    <startMenuGroupName>Startup</startMenuGroupName>
+    <vendor>Dave Page</vendor>
+    <splashImage>DecoratorSplash.png</splashImage>
+    <componentList>
+        <component>
+            <name>default</name>
+            <description>Default Component</description>
+            <canBeEdited>1</canBeEdited>
+            <selected>1</selected>
+            <show>1</show>
+            <folderList>
+                <folder>
+                    <description>Program Files</description>
+                    <destination>${installdir}</destination>
+                    <name>programfileswindows</name>
+                    <platforms>windows</platforms>
+                    <distributionFileList>
+                        <distributionFile>
+                            <origin>release/Decorator.exe</origin>
+                        </distributionFile>
+                        <distributionFile>
+                            <origin>release/mingwm10.dll</origin>
+                        </distributionFile>
+                        <distributionFile>
+                            <origin>release/QtCore4.dll</origin>
+                        </distributionFile>
+                        <distributionFile>
+                            <origin>release/QtGui4.dll</origin>
+                        </distributionFile>
+                    </distributionFileList>
+                </folder>
+            </folderList>
+            <startMenuShortcutList>
+                <startMenuShortcut>
+                    <comment>Decorate your desktop</comment>
+                    <name>Decorator</name>
+                    <runInTerminal>0</runInTerminal>
+                    <windowsExec>${installdir}/Decorator.exe</windowsExec>
+		    <windowsExecArgs></windowsExecArgs>
+                    <windowsIcon>${installdir}/Decorator.exe</windowsIcon>
+                    <windowsPath>${installdir}</windowsPath>
+                </startMenuShortcut>
+            </startMenuShortcutList>
+        </component>
+    </componentList>
+    <parameterList>
+        <directoryParameter>
+            <name>installdir</name>
+            <description>Installer.Parameter.installdir.description</description>
+            <explanation>Installer.Parameter.installdir.explanation</explanation>
+            <value></value>
+            <default>${platform_install_prefix}/${product_shortname}</default>
+            <allowEmptyValue>0</allowEmptyValue>
+            <ask>yes</ask>
+            <cliOptionName>prefix</cliOptionName>
+            <mustBeWritable>yes</mustBeWritable>
+            <mustExist>0</mustExist>
+            <width>40</width>
+        </directoryParameter>
+    </parameterList>
+    <platformOptionsList>
+        <platformOptions>
+            <platform>windows</platform>
+        </platformOptions>
+    </platformOptionsList>
+    <finalPageActionList>
+        <runProgram>
+            <program>${installdir}/Decorator.exe</program>
+            <progressText>Do you want to launch ${product_fullname} now?</progressText>
+            <abortOnError>0</abortOnError>
+            <showMessageOnError>0</showMessageOnError>
+        </runProgram>
+    </finalPageActionList>
+</project>
+

@@ -1,0 +1,38 @@
+///////////////////////////////////////////////////////////////////////////////
+//
+// Resources: Contains the icon and string resources
+// Copyright (C) Dave Page, 2010
+//
+///////////////////////////////////////////////////////////////////////////////
+
+
+#include <winver.h>
+
+IDI_ICON1 ICON DISCARDABLE "Decorator.ico"
+
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION    1,0,1,0
+PRODUCTVERSION 1,0,1,0
+FILEOS         VOS__WINDOWS32
+FILETYPE       VFT_APP
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904E4"
+        BEGIN
+            VALUE "FileVersion",     "1.0.1"
+            VALUE "File Version",    "1.0.1"
+            VALUE "FileDescription", "Decorator"
+            VALUE "LegalCopyright",  "\251 2010, Dave Page"
+            VALUE "LegalTrademarks", "This software is released under the BSD Licence."
+            VALUE "InternalName",    "Decorator"
+            VALUE "OriginalFilename","Decorator.exe"
+            VALUE "ProductName",     "Decorator"
+            VALUE "ProductVersion",  "1.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0409, 0x04E4
+    END
+END
