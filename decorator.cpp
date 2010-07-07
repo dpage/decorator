@@ -113,19 +113,19 @@ void Decorator::Decorate()
     QStringList folders = settings.value(key, getenv("SystemRoot")).toString().split(";");
     QStringList fileList;
 
+    // Supported file types
+    QStringList filters;
+    filters.append("*.bmp");
+    filters.append("*.jpg");
+    filters.append("*.png");
+    filters.append("*.gif");
+
     for (int i = 0; i < folders.size(); ++i)
     {
         if (!folders.at(i).isEmpty())
         {
             QDir dir(folders.at(i));
             dir.setFilter(QDir::Files | QDir::NoSymLinks);
-
-            QStringList filters;
-            filters.append("*.bmp");
-            filters.append("*.jpg");
-            filters.append("*.png");
-            filters.append("*.gif");
-
             dir.setNameFilters(filters);
 
             QFileInfoList files = dir.entryInfoList();
@@ -156,7 +156,7 @@ void Decorator::Decorate()
     }
 
     // Display the file
-   SystemParametersInfo(SPI_SETDESKWALLPAPER, 0, (PVOID)file.utf16(), SPIF_UPDATEINIFILE | SPIF_SENDWININICHANGE);
+    SystemParametersInfo(SPI_SETDESKWALLPAPER, 0, (PVOID)file.utf16(), SPIF_UPDATEINIFILE | SPIF_SENDWININICHANGE);
 
     // Schedule another re-decoration
     timer->start(getTimeout() * 60000);
