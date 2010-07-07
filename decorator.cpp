@@ -150,13 +150,21 @@ void Decorator::Decorate()
         QImage image(file);
         QImageWriter writer(tmpFile);
         writer.setFormat("bmp");
-        writer.write(image);
-
-        file = tmpFile;
+        if (writer.canWrite())
+        {
+            writer.write(image);
+            file = tmpFile;
+        }
+        else
+        {
+            QMessageBox::critical(this, tr("Decorator"), tr("Could not convert the file '") + tmpFile + tr("' to a bitmap."));
+            file = "";
+        }
     }
 
     // Display the file
-    SystemParametersInfo(SPI_SETDESKWALLPAPER, 0, (PVOID)file.utf16(), SPIF_UPDATEINIFILE | SPIF_SENDWININICHANGE);
+    if (!file.isEmpty())
+        SystemParametersInfo(SPI_SETDESKWALLPAPER, 0, (PVOID)file.utf16(), SPIF_UPDATEINIFILE | SPIF_SENDWININICHANGE);
 
     // Schedule another re-decoration
     timer->start(getTimeout() * 60000);
