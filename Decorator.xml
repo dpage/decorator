@@ -1,7 +1,7 @@
 <project>
     <shortName>Decorator</shortName>
     <fullName>Decorator</fullName>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <installerFilename>${product_shortname}-${product_version}.${platform_exec_suffix}</installerFilename>
     <enableRollback>1</enableRollback>
     <enableTimestamp>1</enableTimestamp>
@@ -10,6 +10,8 @@
     <startMenuGroupName>Startup</startMenuGroupName>
     <vendor>Dave Page</vendor>
     <splashImage>DecoratorSplash.png</splashImage>
+    <windowsARPRegistryPrefix>${project.fullName}</windowsARPRegistryPrefix>
+    <windowsSoftwareRegistryPrefix>${project.fullName}</windowsSoftwareRegistryPrefix>
     <componentList>
         <component>
             <name>default</name>
