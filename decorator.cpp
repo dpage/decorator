@@ -138,34 +138,37 @@ void Decorator::Decorate()
         }
     }
 
-    // Get a random file
-    QString file = fileList.at(qrand() % fileList.count());
-
-    // Do we need to convert the file?
-    if (!file.endsWith(".bmp"))
+    if (fileList.count())
     {
-        QString tmpFile = getenv("TEMP");
-        tmpFile += "Decorator.bmp";
+        // Get a random file
+        QString file = fileList.at(qrand() % fileList.count());
 
-        QImage image(file);
-        QImageWriter writer(tmpFile);
-        writer.setFormat("bmp");
-        if (writer.canWrite())
+        // Do we need to convert the file?
+        if (!file.endsWith(".bmp"))
         {
-            writer.write(image);
-            file = tmpFile;
+            QString tmpFile = getenv("TEMP");
+            tmpFile += "Decorator.bmp";
+
+            QImage image(file);
+            QImageWriter writer(tmpFile);
+            writer.setFormat("bmp");
+            if (writer.canWrite())
+            {
+                writer.write(image);
+                file = tmpFile;
+            }
+            else
+            {
+                QMessageBox::critical(this, tr("Decorator"), tr("Could not convert the file '") + tmpFile + tr("' to a bitmap."));
+                file = "";
+            }
         }
-        else
-        {
-            QMessageBox::critical(this, tr("Decorator"), tr("Could not convert the file '") + tmpFile + tr("' to a bitmap."));
-            file = "";
-        }
+
+        // Display the file
+        if (!file.isEmpty())
+            SystemParametersInfo(SPI_SETDESKWALLPAPER, 0, (PVOID)file.utf16(), SPIF_UPDATEINIFILE | SPIF_SENDWININICHANGE);
+
     }
-
-    // Display the file
-    if (!file.isEmpty())
-        SystemParametersInfo(SPI_SETDESKWALLPAPER, 0, (PVOID)file.utf16(), SPIF_UPDATEINIFILE | SPIF_SENDWININICHANGE);
-
     // Schedule another re-decoration
     timer->start(getTimeout() * 60000);
 }
